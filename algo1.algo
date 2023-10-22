@@ -1,0 +1,45 @@
+ALGORITHM SentenceAnalysis
+
+VAR
+sentence: STRING
+length, wordCount, vowelCount: INTEGER
+
+THE GOAL: 
+Read a sentence, character by character, and determine its length, 
+the number of words, and the number of vowels
+
+
+// Initialize counters
+length := 0
+wordCount := 0
+vowelCount := 0
+
+
+// Read the sentence
+sentence := INPUT("Enter a sentence ending with a period: ")
+
+FOR i FROM 1 TO LENGTH(sentence)
+   // Count characters (including the space before the final period)
+   length := length + 1
+
+   // Count words (using space as a separator)
+   IF sentence[i] = ' ' THEN
+      wordCount := wordCount + 1
+   END IF
+
+
+   // Count vowels (checking each character)
+   IF (sentence[i] is a vowel 'a' or 'i' or 'u' or 'e' or 'o' or 'y') THEN
+      vowelCount := vowelCount + 1
+   END IF
+END FOR
+
+// Increment word count (the last word after the final space)
+wordCount := wordCount + 1
+
+// Display statistics
+WRITE "Length of the sentence:", length
+WRITE "Number of words in the sentence:", wordCount
+WRITE "Number of vowels in the sentence:", vowelCount
+
+END
